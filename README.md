@@ -1,6 +1,6 @@
 # LiveResource::Pubnub
 
-TODO: Write a gem description
+Provides LiveResource integration with Pubnub.
 
 ## Installation
 
@@ -18,7 +18,26 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Instantiate and supply a PubnubProtocol to the LiveResource::Builder.
+
+## Rails
+
+(Requires [live_resource-rails](http://github.com/live-resource/rails)
+
+```ruby
+# application.rb
+
+...
+
+config.live_resource[:protocol] = LiveResource::Pubnub::PubnubProtocol.new(
+  Pubnub.new(
+    publish_key:   Education::Application.config.pubnub[:publish_key],
+    subscribe_key: Education::Application.config.pubnub[:subscribe_key],
+    secret_key:    Education::Application.config.pubnub[:secret_key],
+    cipher_key:    Education::Application.config.pubnub[:cipher_key],
+    ssl:           false
+  ))
+```
 
 ## Contributing
 
