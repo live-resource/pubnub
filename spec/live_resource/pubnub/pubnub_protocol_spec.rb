@@ -35,16 +35,27 @@ describe PubnubProtocol do
     end
 
     describe 'the message' do
-      subject { message }
+      subject { pubnub_message }
 
-      let(:message) do
+      let(:pubnub_message) { @pubnub_argument[:message] }
+      let(:pubnub_channel) { @pubnub_argument[:channel] }
+      let(:pubnub_callback) { @pubnub_argument[:callback] }
+
+      before do
         _arg = nil
         pubnub.stub(:publish) { |arg| _arg = arg }
         pubnub_protocol.publish_message(resource_id, message_type, params)
-        _arg
+        @pubnub_argument = _arg
       end
 
-      its([:channel]) { should == channel }
+      it 'should be published on the channel for the resource' do
+        expect(channel).to be(channel)
+      end
+
+      it 'should supply a callback' do
+        expect(pubnub_callback).to_not be_nil
+      end
+
       its([:type]) { should == message_type }
       its([:':resource_id']) { should == resource_id }
 

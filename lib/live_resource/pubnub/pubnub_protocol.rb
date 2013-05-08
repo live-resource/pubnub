@@ -14,11 +14,16 @@ module LiveResource
         params     ||= {}
         channel_id = channel_for(resource_identifier)
 
+        message = params.merge(
+            :type           => type,
+            :':resource_id' => resource_identifier,
+        )
+
         @pubnub.publish(
             params.merge(
-                :channel        => channel_id,
-                :type           => type,
-                :':resource_id' => resource_identifier,
+                :channel  => channel_id,
+                :message  => message,
+                :callback => ->(x) {}
             ))
       end
 
