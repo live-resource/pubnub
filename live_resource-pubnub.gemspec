@@ -7,9 +7,9 @@ Gem::Specification.new do |spec|
   spec.name          = "live_resource-pubnub"
   spec.version       = LiveResource::Pubnub::VERSION
   spec.authors       = ["Will Madden"]
-  spec.email         = ["w.a.madden@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.email         = ["will@letsgeddit.com"]
+  spec.description   = %q{Provides LiveResource integration with Pubnub.}
+  spec.summary       = %q{Provides LiveResource integration with Pubnub.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
