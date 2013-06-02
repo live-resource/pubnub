@@ -78,4 +78,14 @@ describe PubnubProtocol do
       expect(subject).to eq resource_id
     end
   end
+
+  describe "#encode_identifier" do
+    subject { pubnub_protocol.encode_identifier(identifier) }
+
+    let(:identifier) { "/a-b?c#d e" }
+
+    it 'should replace any reserved URI characters with "_"' do
+      expect(subject).to eq '_a-b_c_d_e'
+    end
+  end
 end

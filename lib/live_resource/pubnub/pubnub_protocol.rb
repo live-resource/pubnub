@@ -31,6 +31,11 @@ module LiveResource
         resource_id
       end
 
+      def encode_identifier(identifier)
+        permitted_characters = URI::REGEXP::PATTERN::UNRESERVED
+        identifier.gsub(/[^#{permitted_characters}]/, '_')
+      end
+
     end
 
   end
